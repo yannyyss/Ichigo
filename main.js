@@ -5,53 +5,53 @@ var ctx = canvas.getContext('2d'); //genera una variable contexto que sirve como
 var interval; 
 var frames = 0; //la variable frames empieza en cero.
 var score = Math.floor(frames/60);
-var gudeTamas = []; //array de nuevos gudetamas. Empieza vacío.
+var gudeTamas = []; //array dehttps://yannyyss.github.io/IchigoGame/images/gojira2.png nuevos gudetamas. Empieza vacío.
 var nivel1 = true;
 
 var images = {
-    ichigoRun1: '../IchigoGame/images/running2.png',
-    ichigoFall: '../IchigoGame/images/fall.png',
-    ichigoJump: '../IchigoGame/images/jumping.png',
-    ichigoPunched: '../IchigoGame/images/punched.png',
-    ichigoDown: '../IchigoGame/images/down.png',
-    ichigoDownLeft: '../IchigoGame/images/downleft.PNG',
-    ichigoDownRight: '../IchigoGame/images/downrigth.png',
-    kick: '../IchigoGame/images/kick1.png',
-    huevito: '../IchigoGame/images/huevito.png',
-    gojira1: '../IchigoGame/images/gojira1.png',
-    gojira2: '../IchigoGame/images/gojira2.png',
-    gojira3: '../IchigoGame/images/gojiradamage.png',
-    laser: '../IchigoGame/images/laser.png',
-    startGame: '../IchigoGame/images/StartPortada.png',
-    gameOver: '../IchigoGame/images/gameover.png',
-    youWon: '../IchigoGame/images/WonPortada.png',
-    bg: '../IchigoGame/images/Background.png' //Es el background del videojuego
+    ichigoRun1: './images/running2.png',
+    ichigoFall: './images/fall.png',
+    ichigoJump: './images/jumping.png',
+    ichigoPunched: './images/punched.png',
+    ichigoDown: './images/down.png',
+    ichigoDownLeft: './images/downleft.PNG',
+    ichigoDownRight: './images/downrigth.png',
+    kick: './images/kick1.png',
+    huevito: './images/huevito.png',
+    gojira1: './images/gojira1.png',
+    gojira2: './images/gojira2.png',
+    gojira3: './images/gojiradamage.png',
+    laser: './images/laser.png',
+    startGame: './images/StartPortada.png',
+    gameOver: './images/gameover.png',
+    youWon: './images/WonPortada.png',
+    bg: './images/Background.png' //Es el background del videojuego
 }
 
-var gudetamaFalling = ['../IchigoGame/images/falling1.png','../IchigoGame/images/falling2.png','../IchigoGame/images/falling3.png'];
-var gudetamaIntoTheFloor = ['../IchigoGame/images/floor1.png','../IchigoGame/images/floor2.png','../IchigoGame/images/floor3.png','../IchigoGame/images/floor4.png','../IchigoGame/images/floor5.png'];
-var gudetamaPushed = ['../IchigoGame/images/pushed1.png','../IchigoGame/images/pushed2.png'];
+var gudetamaFalling = ['./images/falling1.png','./images/falling2.png','./images/falling3.png'];
+var gudetamaIntoTheFloor = ['./images/floor1.png','./images/floor2.png','./images/floor3.png','./images/floor4.png','./images/floor5.png'];
+var gudetamaPushed = ['./images/pushed1.png','./images/pushed2.png'];
 
 //Sounds
 
 var inicialSound = new Audio();
-inicialSound.src = "../IchigoGame/sounds/Inicio.mp3";
+inicialSound.src = "./sounds/Inicio.mp3";
 inicialSound.loop = true;
 
 var startSound = new Audio();
-startSound.src = '../IchigoGame/sounds/InvincibleKitty.mp3';
+startSound.src = './sounds/InvincibleKitty.mp3';
 startSound.loop = true;
 
 var approachingBoss = new Audio();
-approachingBoss.src = '../IchigoGame/sounds/ApproachingBoss.mp3';
+approachingBoss.src = './sounds/ApproachingBoss.mp3';
 approachingBoss.loop = true;
 
 var gojiraSong = new Audio();
-gojiraSong.src = '../IchigoGame/sounds/Gojira.mp3';
+gojiraSong.src = './sounds/Gojira.mp3';
 gojiraSong.loop = true;
 
 var itaiSound = new Audio();
-itaiSound.src = '../IchigoGame/sounds/itaisound.mp3';
+itaiSound.src = './sounds/itaisound.mp3';
 
 //class
 
