@@ -91,7 +91,6 @@ class Board { //Es el background del canvas
         ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height); /* */
         ctx.fillStyle = "white"; //Esto pinta el siguiente elemento marcador
         ctx.font = '40px Avenir'; //Esto define el tamaño y la letra del marcador
-        //ctx.fillText("Score" + Math.floor(frames / 60), this.width - 200, 50); //es un texto que cambia con los frames. /* */ No sé que significa en su totalidad.
     }
     gameOverScreen() { //es la función que termina el juego
         this.x = 0;
@@ -164,9 +163,9 @@ class IchigoMan {
 }
 
 class Gudetama {
-    constructor(x = canvas.width/2) { //recibe el valor de x, porque se genera random en otra función, si no encuentra a x, le asigna a x el valor de la mitad del canvas.
+    constructor(x = canvas.width/2, y = -100) { //recibe el valor de x, porque se genera random en otra función, si no encuentra a x, le asigna a x el valor de la mitad del canvas.
         this.x = x; //X recibe una X del exterior
-        this.y = 0; //la posición Y vale 0
+        this.y = y; //la posición Y vale 0
         this.width = 90; // ancho del gudetama
         this.height = 100; // alto del gudetama
         this.image = new Image(); /* */
@@ -372,6 +371,7 @@ function restart() {
 function gameOver() {
   clearInterval(interval); //detiene la función intervalo
   interval = undefined; /* */
+    
   board.gameOverScreen();
   inicialSound.pause(); //Detiene el sonido
   inicialSound.currentTime = 0; /* */
@@ -391,7 +391,7 @@ function gameOver() {
   });
 
     saveScore();
-
+    //showScore();
 
 }
 function won() {
@@ -414,8 +414,9 @@ function won() {
         break;
     }
   });
-
+  
   saveScore();
+  //showScore();
 
 }
 
@@ -426,14 +427,24 @@ function saveScore(){
     if(!scores) scores = [];
     scores = JSON.parse(scores);
     //esto guarda:
-    var bliss = Math.floor(frames / 60 + ichigo1.health);
+    var bliss = Math.floor(frames / 60 - ichigo1.health);
     scores.push(bliss)
     scores = JSON.stringify(scores);
     localStorage.setItem('scores', scores);
     //esto saca del navegador
-
 }
+/*
+function showScore(){
 
+    var scores = localStorage.getItem('scores');
+    if (!scores) scores = [];
+    scores = JSON.parse(scores);
+    scores = scores.sort();
+    scores = JSON.stringify(scores);
+    localStorage.setItem("scores", scores);
+    document.getElementById('#score').innerHTML = "Score: " + scores[0];
+}
+*/
 //aux functions
 
 function imgGudetamaFalling() { //imagen random para gudetama cayendo
@@ -450,6 +461,7 @@ function generateGudetamaFalling() {
 
     if (frames % 100 === 0 && (Math.floor(frames / 60) < 29)){ //Genera Gudetamas cada cierto tiempo, en este caso de 100 en 100 frames
         var x = Math.floor(Math.random() * (canvas.width + 50)); //distancia en la que se generan en el canvas
+
         var g = new Gudetama(x); //Se crea una nueva instancia para generar gudetamas
         gudeTamas.push(g); //Los nuevos gudetamas se guardan en un array que está declarado como vacío al principio del código.
     } 
