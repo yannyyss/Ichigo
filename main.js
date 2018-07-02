@@ -265,7 +265,7 @@ class Laser {
     constructor(){
         this.width = 197;
         this.height = 78;
-        this.x = canvas.width/2;
+        this.x = 650;
         this.y = canvas.height-150;
         this.image = new Image();
         this.image.src = images.laser;
@@ -276,13 +276,13 @@ class Laser {
     }
 
     draw() {
-        if (Math.floor(frames/60) > 40) {
-            if(Math.floor(frames/60) % 2 === 0){
+        if (Math.floor(frames/60) > 40) { //Aparece el laser después de 40 segundos
+            if(Math.floor(frames/60) % 2 === 0){ 
                 this.x--;
                 console.log("aquí toy");
                 ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
-                if(this.x === 150){
-                    this.x = canvas.width/2;
+                if(this.x === 120){
+                    this.x = 650;
                 }
             }
         }
@@ -500,7 +500,7 @@ function isTouchingLaser(ichigo1,laser){
             (ichigo1.y < laser.y + laser.height) &&
             (ichigo1.y + ichigo1.height > laser.y)) {
                 ichigo1.receiveDamage(1);
-                laser.x = canvas.width / 2;//se borra
+                laser.x = 650;//se regresa el laser a la posición inicial
                 //poner sonido
         }
     }
